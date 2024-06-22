@@ -1,0 +1,25 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    {% block meta %}
+    <meta http-equiv="X-UA-Comppatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% endblock %}
+
+    <title>The Brewtique{% block extra_title %}{% endblock %}</title>
+</head>
+
+<body>
+    <header>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+
+</html>
