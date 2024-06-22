@@ -7,4 +7,4 @@ assignees: RobinF98
 
 ---
 
-As a **role** I can **capacity** so that **received benefit**
+As a **role** I can **capacity** in order to **received benefit**
