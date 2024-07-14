@@ -11,9 +11,12 @@ class ProductAdmin(admin.ModelAdmin):
         'category',
         'price',
         'rating',
+        'has_strength',
         'strength',
         'image',
     )
+
+    exclude = ["sku"]
 
     ordering = ('sku',)
 
