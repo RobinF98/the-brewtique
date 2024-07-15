@@ -1,4 +1,3 @@
-from signal import valid_signals
 from string import ascii_uppercase
 from django.db import models
 from django.forms import ValidationError

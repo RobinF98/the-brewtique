@@ -1,0 +1,18 @@
+[
+{
+    "model": "products.category",
+    "pk": 1,
+    "fields": {
+        "name": "coffee",
+        "friendly_name": "Beans and Grounds"
+    }
+},
+{
+    "model": "products.category",
+    "pk": 2,
+    "fields": {
+        "name": "equipment",
+        "friendly_name": "brew-ware"
+    }
+}
+]
