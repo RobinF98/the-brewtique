@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row category-search"></div>
+        <div class="row product-container">
+            {% for product in products %}
+                <div class="row">
+                    <div class="col-8 offset-1">
+                        <h2>{{ product.name }}</h2> 
+                        <p class="">{{ product.description }}</p>
+                    </div>
+                    <div class="col-2 d-flex flex-column justify-content-between">
+                        <div class="product-info">
+                            <p class="fw-bold my-1">${{ product.price }}</p>
+                            {% if product.has_strength %}
+                            <p class="fw-bold my-1">Strength: {{product.strength }}/5</p>
+                            {% endif %}
+                            <p class="fw-bold my-1">Rated {{ product.rating }}/10</p>
+                            <p class="fw-bold my-1">{{ product.stock_quantity }} in stock</p>
+                        </div>
+                        <div class="button-container justify-content-start">
+                            <button class="btn btn-outline-dark border-1 rounded-0 fw-bold mx-auto">Add to bag</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-10 offset-1">
+                        {% if not forloop.last %}
+                            <hr class="border border-2 border-dark">
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock content %}
