@@ -28,7 +28,7 @@ DEBUG = os.environ.get("DEBUG")
 
 ALLOWED_HOSTS = [
     "localhost",
-    "https://brewtique-12a59fe07437.herokuapp.com/",
+    "brewtique-12a59fe07437.herokuapp.com",
                 ]
 
 
