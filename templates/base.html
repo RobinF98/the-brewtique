@@ -18,7 +18,9 @@
     {% endblock extra_css %}
 
     {% block core_js %}
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/ca419c56bc.js" crossorigin="anonymous"></script>
     {% endblock core_js %}
 
     {% block extra_js %}
@@ -28,28 +30,75 @@
 </head>
 
 <body>
-    <header class="container-fluid sticky-top">
+    <header class="container-fluid sticky-top bg-light py-1 mb-4">
         <div class="row">
-            <div class="col-4"></div>
-            <div class="col-4"></div>
-            <div class="col-4">
-                <div class="row">
-                    <div class="col-12">
-                        {% if request.user.is_authenticated %}
-                            User is logged in as {{ request.user.username }}
-                        {% else %}
-                            No user is logged in
-                        {% endif %}
+            <div class="col-12 col-lg-4 text-center text-lg-start my-auto">
+                <a href="{% url "home" %}" class="fs-2 fw-bold m-0 text-body nav-link">T.B</a>
+            </div>
+            <div class="col-12 col-lg-4 my-auto">
+                <form method="GET" action="">
+                    <div class="input-group w-100">
+                        <input type="text" class="form-control border border-dark" name="q" placeholder="Search...">
+                        <button class="btn btn-dark border border-dark" type="submit">
+                            <span class="icon">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </span>
+                        </button>
                     </div>
-                </div>
-                <a href="{% url 'account_login' %}">login</a>
-                <a href="{% url 'account_logout' %}">logout</a>
+                </form>
+            </div>
+            <div class="col-12 col-lg-4 my-auto">
+                <ul class="list-inline list-unstyled text-center text-lg-end my-0">
+                    <li class="list-inline-item dropdown">
+                        <a href="#" class="text-dark dropdown nav-link border-0" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="text-center">
+                                <div><i class="fa-regular fa-user"></i></div>
+                                <p class="my-0">My Account</p>
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu">
+                            {% if request.user.is_authenticated %}
+                                <li>
+                                    <a href="#" class="m-1 dropdown-item nav-link">{{ request.user.username }}</a>
+                                    <a class="m-1 text-dark nav-link" href="{% url 'account_logout' %}">Logout</a>
+                                </li>
+                            {% else %}
+                                <a class="m-1 text-dark dropdown-item nav-link" href="{% url 'account_login' %}">Login</a>
+                                <a class="m-1 text-dark dropdown-item nav-link" href="{% url 'account_signup' %}">Sign up</a>
+                            {% endif %}
+                        </ul>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="" class="text-dark nav-link">
+                            <div class="text-center">
+                                <div><i class="fa-solid fa-shopping-bag"></i></div>
+                                <p class="my-0">
+                                    {% if grand_total %}
+                                        ${{ grand_total|floatformat:2 }}
+                                    {% else %}
+                                        $0.00
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </header>
 
+    {% block pageheader %}
+    {% endblock pageheader %}
+
+    {% if messages %}
+        <div class="message-container"></div>
+    {% endif %}
+
     {% block content %}
     {% endblock %}
+
+    {% block postloadjs %}
+    {% endblock postloadjs %}
 
 </body>
 
