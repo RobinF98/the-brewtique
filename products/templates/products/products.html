@@ -9,15 +9,15 @@
                 <div class="row">
                     <div class="col-8 offset-1">
                         <h2>{{ product.name }}</h2> 
-                        <p class="">{{ product.description }}</p>
+                        <!-- <p class="">{{ product.description }}</p> -->  
                     </div>
-                    <div class="col-2 d-flex flex-column justify-content-between">
+                    <div class="col-2 d-flex flex-column justify-content-between text-end">
                         <div class="product-info">
                             <p class="fw-bold my-1">${{ product.price }}</p>
+                            <p class="fw-bold my-1">Rated {{ product.rating }}/10</p>
                             {% if product.has_strength %}
                             <p class="fw-bold my-1">Strength: {{product.strength }}/5</p>
                             {% endif %}
-                            <p class="fw-bold my-1">Rated {{ product.rating }}/10</p>
                             <p class="fw-bold my-1">{{ product.stock_quantity }} in stock</p>
                         </div>
                         <div class="button-container justify-content-start">

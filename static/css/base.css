@@ -1,3 +1,7 @@
 .nav-link {
     text-decoration: none;
 }
+
+body {
+    padding-bottom: 1.5rem !important;
+}
