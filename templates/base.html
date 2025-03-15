@@ -37,9 +37,14 @@
                 <a href="{% url "home" %}" class="fs-3 fw-bold p-1 btn btn-dark">T.B</a>
             </div>
             <div class="col-12 col-lg-4 my-auto">
-                <form method="GET" action="">
+                <form method="GET" action="{% url 'products' %}">
                     <div class="input-group w-100">
-                        <input type="text" class="form-control border border-dark" name="q" placeholder="Search...">
+                        <input type="text" class="form-control border border-dark" name="q"
+                            {% if search_term %}
+                                placeholder="{{search_term}}"
+                            {% else %}
+                                placeholder="Search..."
+                            {% endif %}>
                         <button class="btn btn-dark border border-dark" type="submit">
                             <span class="icon">
                                 <i class="fa-solid fa-magnifying-glass"></i>
