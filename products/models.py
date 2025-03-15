@@ -48,12 +48,12 @@ class Product(models.Model):
 
     has_strength = models.BooleanField(default=False, blank=True,)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    rating = models.DecimalField(max_digits=6, decimal_places=1, null=True,
+    rating = models.PositiveBigIntegerField(null=True,
                                  blank=True, validators=[
-                                     MaxValueValidator(10),
+                                     MaxValueValidator(5),
                                      MinValueValidator(1),
                                  ])
-    strength = models.DecimalField(max_digits=2, decimal_places=1, null=True,
+    strength = models.PositiveIntegerField(null=True,
                                    blank=True, validators=[
                                        MaxValueValidator(5),
                                        MinValueValidator(1),
