@@ -1,4 +1,3 @@
-from webbrowser import get
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.db.models import Q
@@ -12,8 +11,13 @@ def products(request):
 
     products = Product.objects.all()
     query = None
+    category = None
 
     if request.GET:
+        if 'category' in request.GET:
+            category = request.GET['category']
+            products = products.filter(category__name=category)
+
         if 'q' in request.GET:
             query = request.GET['q']
             # return all products page if no search query is entered
@@ -25,7 +29,8 @@ def products(request):
 
     context = {
         'products': products,
-        'search_term': query
+        'search_term': query,
+        'category': category,
     }
 
     return render(request, "products/products.html", context)
