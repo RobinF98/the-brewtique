@@ -1,0 +1,50 @@
+<nav class="navbar bg-light navbar-expand-lg">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Category
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item {% if category == 'coffee' %}disabled{% endif %}" href="{% url 'products' %}?category=coffee">Beans & Grounds</a></li>
+                            <li><a class="dropdown-item {% if category == 'equipment' %}disabled{% endif %}" href="{% url 'products' %}?category=equipment">Brew-ware</a></li>
+                            <li><a class="dropdown-item" href="{% url 'products' %}">All Products</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Sort
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><h6 class="dropdown-header">Price</h6></li>
+                            <li><a class="dropdown-item" href="#">Low to High</a></li>
+                            <li><a class="dropdown-item" href="#">High to Low</a></li>
+                            <li><h6 class="dropdown-header">Rating</h6></li>
+                            <li><a class="dropdown-item" href="#">Low to High</a></li>
+                            <li><a class="dropdown-item" href="#">High to Low</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            
+            </div>
+        </div>
+    </div>
+</nav>
