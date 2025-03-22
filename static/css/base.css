@@ -2,6 +2,10 @@
     text-decoration: none;
 }
 
+html {
+    width: 100%;
+}
+
 body {
     padding-bottom: 1.5rem !important;
 }

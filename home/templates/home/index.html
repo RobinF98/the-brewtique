@@ -2,10 +2,12 @@
 {% load static %}
 
 {% block content %}
-<div class="row">
-    <div class="col">
-        <h1>The Brewtique</h1>
-        <a href="{% url 'products' %}" class="text-decoration-none text-dark">View Store</a>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <h1>The Brewtique</h1>
+            <a href="{% url 'products' %}" class="text-decoration-none text-dark">View Store</a>
+        </div>
     </div>
 </div>
 {% endblock content %}
