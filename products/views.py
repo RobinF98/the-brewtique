@@ -12,6 +12,7 @@ def products(request):
     products = Product.objects.all()
     query = None
     category = None
+    sort = None
 
     if request.GET:
 
@@ -41,7 +42,7 @@ def products(request):
         'products': products,
         'search_term': query,
         'category': category,
-        'sorting': sort,
+        'sort': sort,
     }
 
     return render(request, "products/products.html", context)

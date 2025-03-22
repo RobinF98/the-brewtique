@@ -1,12 +1,12 @@
 <nav class="navbar bg-light navbar-expand-lg">
     <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+        <a class="navbar-brand invisible m-0" href="#"></a>
+        <button class="navbar-toggler align-self-end" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
             aria-controls="offcanvasNavbar">
             <i class="fa-solid fa-bars"></i>
         </button>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
@@ -23,8 +23,8 @@
                             Category
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item {% if category == 'coffee' %}disabled{% endif %}" href="{% url 'products' %}?category=coffee">Beans & Grounds</a></li>
-                            <li><a class="dropdown-item {% if category == 'equipment' %}disabled{% endif %}" href="{% url 'products' %}?category=equipment">Brew-ware</a></li>
+                            <li><a class="dropdown-item {% if category == 'coffee' %}disabled{% endif %}" href="{% url 'products' %}{% querystring category="coffee" %}">Beans & Grounds</a></li>
+                            <li><a class="dropdown-item {% if category == 'equipment' %}disabled{% endif %}" href="{% url 'products' %}{% querystring category="equipment" %}">Brew-ware</a></li>
                             <li><a class="dropdown-item" href="{% url 'products' %}">All Products</a></li>
                         </ul>
                     </li>
@@ -35,12 +35,15 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><h6 class="dropdown-header">Price</h6></li>
-                            <li><a class="dropdown-item" href="{% url 'products' %}?sort=price-asc">Low to High</a></li>
-                            <li><a class="dropdown-item" href="{% url 'products' %}?sort=price-desc">High to Low</a></li>
+                            <li><a class="dropdown-item" href="{% url 'products' %}{% querystring sort="price-asc" %}">Low to High</a></li>
+                            <li><a class="dropdown-item" href="{% url 'products' %}{% querystring sort="price-desc" %}">High to Low</a></li>
                             <li><h6 class="dropdown-header">Rating</h6></li>
-                            <li><a class="dropdown-item" href="{% url 'products' %}?sort=rating-asc">Low to High</a></li>
-                            <li><a class="dropdown-item" href="{% url 'products' %}?sort=rating-desc">High to Low</a></li>
+                            <li><a class="dropdown-item" href="{% url 'products' %}{% querystring sort="rating-desc" %}">High to Low</a></li>
+                            <li><a class="dropdown-item" href="{% url 'products' %}{% querystring sort="rating-asc" %}">Low to High</a></li>
                         </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'products' %}" class="nav-link {% if sort == None and category == None and search_term == None %}disabled{% endif %}">Clear filters</a>
                     </li>
                 </ul>
             
