@@ -82,6 +82,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.contexts.cart_contents',
 
                 # `allauth` needs this from django
                 'django.template.context_processors.request',
@@ -172,3 +173,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STANDARD_DELIVERY_PERCENTAGE = 10
