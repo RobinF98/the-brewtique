@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load cart_tools %}
 
 {% block content %}
     <div class="container-fluid">
@@ -37,9 +38,32 @@
                                 <td>
                                     {{ item.product.name }}
                                 </td>
-                                <td>{{ item.quantity }}</td>
+                                <td>
+                                    <form method="POST" action="{% url 'adjust_cart' item.item_id %}" class="form update-form">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <button class="decrement-qty btn btn-sm btn-black rounded-0 decrement-qty_{{ item.item_id }}" 
+                                                    data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
+                                                    <span>
+                                                        <i class="fas fa-minus fa-sm"></i>
+                                                    </span>
+                                                </button>
+                                                <input class="form-control form-control-sm qty_input" type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
+                                                <button class="increment-qty btn btn-sm btn-black rounded-0 increment-qty_{{ item.item_id }}"
+                                                    data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
+                                                    <span>
+                                                        <i class="fas fa-plus fa-sm"></i>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <a class="update-link text-info" type="submit"><small>Update</small></a>
+                                    <a href="" class="remove-item float-end text-danger link-underline link-underline-opacity-0" id="remove_{{ item.item_id }}"><small>Remove</small></a>
+                                </td>
                                 <td>{{ item.product.price }}</td>
-                                <td>{{ item.quantity }} * {{ item.product.price }}</td>
+                                <td>{{ item.quantity | multiply:item.product.price }}</td>
                             </tr>
                         {% endfor %}
                         <tr>
@@ -68,3 +92,30 @@
         </div>
     </div>
 {% endblock content %}
+
+{% block postloadjs %}
+{{ block.super }}
+{% include "products/includes/qty_input.html" %}
+<script type="text/javascript">
+    // update quantity on click
+    $('.update-link').click(function(e) {
+        e.preventDefault();
+        let form = $(this).prev(".update-form");
+        form.trigger('submit');
+    })
+
+    // remove item and reload on click
+    $('.remove-item').click(function(e) {
+        e.preventDefault();
+        let csrfToken = "{{ csrf_token }}";
+        let itemID = $(this).attr('id').split('remove_')[1];
+        let url = `/cart/remove/${itemID}`
+        let data = {'csrfmiddlewaretoken': csrfToken,}
+
+        let postform = $.post(url, data);
+            postform.done(function() {
+                location.reload();
+            })
+    })
+</script>
+{% endblock postloadjs %}
