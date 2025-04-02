@@ -126,28 +126,8 @@
 {% endblock content %}
 
 {% block postloadjs %}
-{{ block.super }}
-{% include "products/includes/qty_input.html" %}
-<script type="text/javascript">
-    // update quantity on click
-    $('.update-link').click(function(e) {
-        e.preventDefault();
-        let form = $(this).prev(".update-form");
-        form.trigger('submit');
-    })
-
-    // remove item and reload on click
-    $('.remove-item').click(function(e) {
-        e.preventDefault();
-        let csrfToken = "{{ csrf_token }}";
-        let itemID = $(this).attr('id').split('remove_')[1];
-        let url = `/cart/remove/${itemID}`
-        let data = {'csrfmiddlewaretoken': csrfToken,}
-
-        let postform = $.post(url, data);
-            postform.done(function() {
-                location.reload();
-            })
-    })
-</script>
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key"}}
+    {{ client_secret|json_script:"client_secret"}}
+    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock postloadjs %}
