@@ -9,6 +9,8 @@ The Brewtique is a one-stop online coffee shop, stocking a wide variety of coffe
 * Product
 * Category
 
+## Testing and Validation
+
 ### Thanks
 
 * [Coffee.ie](https://coffee.ie/) - for the products and dexcriptions used in the store
