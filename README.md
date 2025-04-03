@@ -8,6 +8,8 @@ The Brewtique is a one-stop online coffee shop, stocking a wide variety of coffe
 
 * Product
 * Category
+* Wishlist
+* Profile
 
 ## Testing and Validation
 
