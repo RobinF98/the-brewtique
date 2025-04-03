@@ -66,10 +66,11 @@
                         </a>
                         <ul class="dropdown-menu">
                             {% if request.user.is_authenticated %}
-                                <li>
-                                    <a href="{% url 'profile' %}" class="m-1 text-dark dropdown-item nav-link">{{ request.user.username }}</a>
-                                    <a class="m-1 text-dark nav-link" href="{% url 'account_logout' %}">Logout</a>
-                                </li>
+                                {% if request.user.is_superuser %}
+                                    <a href="{% url 'add_product' %}" class="m-1 text-dark dropdown-item nav-link">Product management</a>
+                                {% endif %}
+                                <a href="{% url 'profile' %}" class="m-1 text-dark dropdown-item nav-link">{{ request.user.username }}</a>
+                                <a class="m-1 dropdown-item text-dark nav-link" href="{% url 'account_logout' %}">Logout</a>
                             {% else %}
                                 <a class="m-1 text-dark dropdown-item nav-link" href="{% url 'account_login' %}">Login</a>
                                 <a class="m-1 text-dark dropdown-item nav-link" href="{% url 'account_signup' %}">Sign up</a>
