@@ -2,8 +2,10 @@ from django.shortcuts import get_object_or_404, render
 from checkout.models import Order
 from profiles.models import UserProfile
 from .forms import UserProfileForm
+from django.contrib.auth.decorators import login_required
 
 
+@login_required
 def profile(request):
     '''Display user profile'''
 
