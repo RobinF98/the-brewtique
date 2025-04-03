@@ -67,7 +67,7 @@
                         <ul class="dropdown-menu">
                             {% if request.user.is_authenticated %}
                                 <li>
-                                    <a href="#" class="m-1 text-dark dropdown-item nav-link">{{ request.user.username }}</a>
+                                    <a href="{% url 'profile' %}" class="m-1 text-dark dropdown-item nav-link">{{ request.user.username }}</a>
                                     <a class="m-1 text-dark nav-link" href="{% url 'account_logout' %}">Logout</a>
                                 </li>
                             {% else %}
