@@ -1,6 +1,8 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.db.models import Q
+
+from wishlist.models import Wishlist, WishlistItem
 from .models import Category, Product
 from .forms import ProductForm
 from django.contrib.auth.decorators import login_required
@@ -55,8 +57,13 @@ def product_details(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
 
+    # Check if product is in wishlist
+    wishlist = Wishlist.objects.filter(user=request.user)[0]
+    in_wishlist = WishlistItem.objects.filter(wishlist=wishlist, product=product).exists()
+
     context = {
         'product': product,
+        'in_wishlist': in_wishlist,
     }
 
     return render(request, "products/product_detail.html", context)
