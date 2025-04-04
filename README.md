@@ -52,12 +52,19 @@ Follow the steps outlined below to deploy:
 
 * Add your Heroku app hostname (something like ```brewtique-resubmission-914b75bb89ab.herokuapp.com```) to your ```ALLOWED_HOSTS``` list in settings.py
 
-* Temporarily add ```DISABLE_COLLECTSTATIC``` , ```1``` to your Heroku config vars
+* Install WhiteNoise ```pip install whitenoise``` to manage the serving of static files.
+
+* Add the WhiteNoise middleware to your settings.py. [WhiteNoise docs](https://whitenoise.readthedocs.io/en/stable/django.html)
 
 * Add ```SECRET_KEY``` , ```YOUR GENERATED SECRET KEY``` to your Heroku config vars (not the same as the one in env.py!)
 
+* In the Heroku 'Deploy' tab, navigate to 'Deployment Method', select GitHub, and search for your Github repository
+
+* Make sure you select the correct branch!
+
+* Click 'Enable Automatic Deploys', then click 'Deploy Branch'
 ## Testing and Validation
 
 ### Thanks
 
-* [Coffee.ie](https://coffee.ie/) - for the products and dexcriptions used in the store
+* [Coffee.ie](https://coffee.ie/) - for the products and descriptions used in the store
