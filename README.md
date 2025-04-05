@@ -7,9 +7,15 @@ The Brewtique is a one-stop online coffee shop, stocking a wide variety of coffe
 ### Models
 
 * Product
+    * These are the items to be sold. They have a lot of information saved to each instance.
 * Category
-* Wishlist
+    * Two main categories: Coffee (Beans&Grounds), and Equipment (Brew-ware)
 * Profile
+    * Users can create a profile on the site, where they can store their information like delivery address, email, and past orders 
+* Wishlist
+    * Users can add, remove, and view products on their wishlist, which is linked to their profile.
+* Newsletter
+    * Users can sign up for an email newsletter, in which they will learn about product / site updates and special offers
 
 ## Deployment
 

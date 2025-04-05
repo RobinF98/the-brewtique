@@ -29,7 +29,6 @@ class Product(models.Model):
     name = models.CharField(max_length=254)
     description = models.TextField()
 
-    # TODO: Set validation (max_value/ min_value for size field)
     size = models.PositiveIntegerField(null=True, blank=True)
 
     KILOGRAM = "kg"
