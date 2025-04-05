@@ -42,6 +42,11 @@
                     <li class="nav-item">
                         <a href="{% url 'products' %}" class="nav-link {% if sort == None and category == None and search_term == None %}disabled{% endif %}">Clear filters</a>
                     </li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a href="{% url 'newsletter' %}" class="nav-link">Newsletter</a>
+                        </li>
+                    {% endif %}
                 </ul>
             
             </div>

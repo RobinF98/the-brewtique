@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'newsletter/css/newsletter.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+<div class="row">
+    <div class="col-10 offset-1 col-lg-6 offset-lg-3">
+        <h2>Newsletter signup</h2>
+        <p class="text-muted">Fill in your details below to get special offers and updates delivered to your inbox</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-10 offset-1 col-lg-6 offset-lg-3">
+        <form action="#" method="POST">
+            {% csrf_token %}
+            {{ form | crispy }}
+            <div class="button-wrapper text-end">
+                <button class="btn btn-dark rounded-0" type="submit">Sign up for our Newsletter!</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+{% endblock content %}
