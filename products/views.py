@@ -56,10 +56,12 @@ def product_details(request, product_id):
     """ View to show product details """
 
     product = get_object_or_404(Product, pk=product_id)
+    in_wishlist = None
 
     # Check if product is in wishlist
-    wishlist = Wishlist.objects.filter(user=request.user)[0]
-    in_wishlist = WishlistItem.objects.filter(wishlist=wishlist, product=product).exists()
+    if request.user.is_authenticated:
+        wishlist = Wishlist.objects.get_or_create(user=request.user)
+        in_wishlist = WishlistItem.objects.filter(wishlist=wishlist[0], product=product).exists()
 
     context = {
         'product': product,
