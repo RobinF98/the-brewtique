@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://brewtique-resubmission-914b75bb89ab.herokuapp.com/sitemap.xml

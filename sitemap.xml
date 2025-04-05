@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/accounts/login/</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/accounts/signup/</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/cart/</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/products/</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/products/?category=coffee</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/products/?category=equipment</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/products/?sort=price-asc</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/products/?sort=price-desc</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/products/?sort=rating-desc</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/products/?sort=rating-asc</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/accounts/password/reset/</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/products/1/</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/products/3/</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/products/4/</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/products/2/</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/products/?category=coffee&amp;sort=price-asc</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/products/?category=coffee&amp;sort=price-desc</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/products/?category=coffee&amp;sort=rating-desc</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/products/?category=coffee&amp;sort=rating-asc</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/products/?category=equipment&amp;sort=price-asc</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/products/?category=equipment&amp;sort=price-desc</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/products/?category=equipment&amp;sort=rating-desc</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/products/?category=equipment&amp;sort=rating-asc</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/products/?sort=price-asc&amp;category=coffee</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/products/?sort=price-asc&amp;category=equipment</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/products/?sort=price-desc&amp;category=coffee</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/products/?sort=price-desc&amp;category=equipment</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/products/?sort=rating-desc&amp;category=coffee</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/products/?sort=rating-desc&amp;category=equipment</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/products/?sort=rating-asc&amp;category=coffee</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brewtique-resubmission-914b75bb89ab.herokuapp.com/products/?sort=rating-asc&amp;category=equipment</loc>
+  <lastmod>2025-04-05T22:46:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>
