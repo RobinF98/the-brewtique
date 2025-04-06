@@ -106,8 +106,28 @@ Follow the steps outlined below to deploy:
 | Responsiveness - Navbar | - | Navbar changes to hideable sidebar on smaller screens | Works as expected |
 | Responsiveness - full site | - | Site resizes to fit smaller screens in legible and pleasing manner | Works as expected |
 
+### Validation:
+The site has been validated using the [HTML validator](https://validator.w3.org/). The only errors were based on normal bootstrap syntax: [Screenshot](documentation/HTML_validator.png)
+The code (Python & JS) has been validated using linter extensions in VS Code
+
+## Design
+The site design took a lot of inspiration from Bootique-Ado, a walkthrough project to introduce students to web marketing and e-commerce websites.
+It is a simple, repetitive layout, that makes site navigation simpler
+[Wireframe](documentation/wireframe.png)
+
 ## SEO
+
+* Keywords:
+    * coffee beans - buy coffee bulk - barista coffee equipment - Coffee Lover - Unique gift for coffee lovers - Ground coffee - High quality coffee - Coffee syrup - Flavored coffee - Strongest coffee
+
 ## Facebook page
+
+A screenshot of the Facebook Business profile created for this sits can be found [here](documentation/Brewtique_Facebook_Mockup.png)
+
+## E-Commerce
+
+This business follows the B2C model, advertising and supplying directly individual customers
+
 ### Thanks
 
 * [Coffee.ie](https://coffee.ie/) - for the products and descriptions used in the store
