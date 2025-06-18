@@ -1,9 +1,6 @@
-from string import ascii_uppercase
 from django.db import models
 from django.forms import ValidationError
-from django.utils.crypto import get_random_string
 from django.core.validators import MaxValueValidator, MinValueValidator
-import string
 import uuid
 
 
@@ -59,7 +56,6 @@ class Product(models.Model):
                                    ])
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
-    stock_quantity = models.PositiveIntegerField(default=1, null=False, blank=False)
 
     def __str__(self):
         return self.name

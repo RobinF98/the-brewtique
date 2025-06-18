@@ -17,7 +17,6 @@
                             {% if product.has_strength %}
                             <p class="fw-bold my-1">Strength: {{product.strength }}/5</p>
                             {% endif %}
-                            <p class="fw-bold my-1">{{ product.stock_quantity }} in stock</p>
                         </div>
                         {% if request.user.is_superuser %}
                             <small>
