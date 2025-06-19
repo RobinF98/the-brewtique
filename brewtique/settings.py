@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -118,12 +120,7 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
-# log confirmation emails to console while in development
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
-# ACCOUNT_EMAIL_REQUIRED = True
-# ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_LOGIN_METHODS = {'username', 'email'}
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'email2*', 'username*',  'password1*',
                         'password2*']
@@ -187,6 +184,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+CLOUDINARY_URL = os.environ.get('CLOUDINARY_URL')
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
