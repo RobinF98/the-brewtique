@@ -1,6 +1,8 @@
 from django.shortcuts import get_object_or_404, render, redirect, reverse
 from django.contrib import messages
 from django.conf import settings
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 
 from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
@@ -124,6 +126,26 @@ def checkout_success(request, order_number):
 
     if 'cart' in request.session:
         del request.session['cart']
+
+    success_email_html = render_to_string(
+        'checkout/success_email.html',
+        context={
+            'order': order,
+            'request': request,
+        },
+    )
+
+    # Send confirmation email:
+
+    success_email_subject = f"Order confirmation: Order number: {order_number}"
+
+    send_mail(
+        subject=success_email_subject,
+        message=success_email_html,
+        from_email=None,
+        recipient_list=[order.email],
+        html_message=success_email_html,
+        )
 
     template = 'checkout/checkout_success.html'
     context = {
