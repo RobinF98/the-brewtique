@@ -1,9 +1,7 @@
-from string import ascii_uppercase
 from django.db import models
 from django.forms import ValidationError
-from django.utils.crypto import get_random_string
 from django.core.validators import MaxValueValidator, MinValueValidator
-import string
+import uuid
 
 
 class Category(models.Model):
@@ -24,52 +22,52 @@ class Category(models.Model):
 class Product(models.Model):
     category = models.ForeignKey('Category', null=True, blank=True,
                                  on_delete=models.SET_NULL)
-    sku = models.CharField(max_length=254, unique=True, null=True, blank=True)
+    sku = models.UUIDField(default=uuid.uuid4)
     name = models.CharField(max_length=254)
     description = models.TextField()
-    has_strength = models.BooleanField(default=False, null=True, blank=True,)
+
+    size = models.PositiveIntegerField(null=True, blank=True)
+
+    KILOGRAM = "kg"
+    GRAM = "g"
+    LITER = "L"
+    MILLILITER = "mL"
+    NO_UNIT = ""
+    UNIT_CHOICES = {
+        KILOGRAM: "kilogram",
+        GRAM: "gram",
+        LITER: "liter",
+        MILLILITER: "milliliter",
+        NO_UNIT: "no_unit",
+    }
+    unit = models.CharField(max_length=2, choices=UNIT_CHOICES, default=NO_UNIT, blank=True)
+
+    has_strength = models.BooleanField(default=False, blank=True,)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    rating = models.DecimalField(max_digits=6, decimal_places=1, null=True,
+    rating = models.PositiveBigIntegerField(null=True,
                                  blank=True, validators=[
-                                     MaxValueValidator(10),
+                                     MaxValueValidator(5),
                                      MinValueValidator(1),
                                  ])
-    strength = models.DecimalField(max_digits=2, decimal_places=1, null=True,
+    strength = models.PositiveIntegerField(null=True,
                                    blank=True, validators=[
                                        MaxValueValidator(5),
                                        MinValueValidator(1),
                                    ])
     image_url = models.URLField(max_length=1024, null=True, blank=True)
-    image = models.ImageField(null=True, blank=True)
-    stock_quantity = models.PositiveIntegerField(default=1, null=False, blank=False)
+    image = models.ImageField(upload_to="product_images/", null=True, blank=True)
 
     def __str__(self):
         return self.name
 
-    def create_sku(self,):
-        # generate random unique SKU
-        if not self.sku:
-            self.sku = get_random_string(length=12, allowed_chars=ascii_uppercase + string.digits)
-
-    # def validate_strength(self, *args, **kwargs):
-    #     """
-    #         Checks that strength field has a value if has_strength is True
-    #     """
-    #     if self.has_strength and not self.strength or not self.has_strength and self.strength:
-    #         raise ValidationError("Please set a strength value")
-
     def clean(self, *args, **kwargs):
         # ensure strength and has_strength agree
-        if self.has_strength and not self.strength or not self.has_strength and self.strength:
-            raise ValidationError("Please set a strength value")
+        is_strength_valid = True if self.has_strength == bool(self.strength) else False
+        if not is_strength_valid:
+            raise ValidationError(f"Please set a strength value. Strength: {bool(self.strength)}. has_strength{self.has_strength}")
 
-    def save(self, *args, **kwargs):
-        while True:
-            try:  # check sku uniqueness and regenerate if not unique
-                self.create_sku()
-            except ValidationError:
-                continue
-            break
-        # if not self.strength and self.has_strength:
-        #     raise ValidationError("Please set a strength value.")
-        super().save(*args, **kwargs)
+        # ensure that if the product has a size, it has a unit too.
+        # if self.get_unit_display() != 'no_unit' and self.strength is not None:
+        size_matches_unit = bool(self.unit) == bool(self.size)
+        if not size_matches_unit:
+            raise ValidationError("The unit value needs a corresponding size value (and vice versa)")

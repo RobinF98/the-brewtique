@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
+            <div class="image-container my-5">
+                {% if product.image %}
+                    <a href="{{ product.image.url }}" target="_blank">
+                        <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    </a>
+                {% else %}
+                    <a href="">
+                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="product-details-container mb-5 mt-md-5">
+                <p class="mb-0">{{ product.name }}</p>
+                {% if user.is_authenticated %}
+                {% if in_wishlist %}
+                    <a href="{% url 'remove_from_wishlist' product.id 'prd' %}" class="btn mb-1 btn-sm rounded-0 btn-secondary">Remove from Wishlist</a>
+                {% else %}
+                    <a href="{% url 'add_to_wishlist' product.id %}" class="btn mb-1 btn-sm rounded-0 btn-success">Add to Wishlist</a>
+                {% endif %}
+                {% endif %}
+                <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
+                {% if product.size %}
+                    <div class="text-muted fw-light">{{ product.size }} {{ product.unit }}</div>
+                {% endif %}
+                {% if product.has_strength %}
+                    <div class="row text-muted fw-light">
+                        <div class="col-2">Strength</div> 
+                        {% for i in "12345" %}
+                            {% if forloop.counter <= product.strength %}
+                                <i class="fa-solid fa-square-full fa-fw"></i>
+                            {% else %}
+                                <i class="fa-regular fa-square-full fa-fw"></i>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% if product.rating %}
+                    <div class="row text-muted fw-light">
+                        <div class="col-2">Rating</div>
+                        {% for i in "12345" %}
+                            {% if forloop.counter <= product.rating %}
+                                <i class="fa-solid fa-star fa-fw"></i>
+                            {% else %}
+                                <i class="fa-regular fa-star fa-fw"></i>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <small class="text-muted fw-light">No Rating</small>
+                {% endif %}
+                <p class="mt-3">{{ product.description }}</p>
+                <form class="form" action="{% url 'add_to_cart' product.id %}" method="POST">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="col-12">
+                            <p class="mt-3"><strong>Quantity:</strong></p>
+                            <div class="form-group w-50">
+                                <div class="input-group">
+                                    <button class="btn btn-outline-dark rounded-0 decrement-qty" data-item_id="{{ product.id }}" id="decrement-qty_{{ product.id }}">
+                                        <i class="fa-solid fa-minus"></i>
+                                    </button>
+                                    <input class="form-control qty_input" type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
+                                    <button class="btn btn-outline-dark rounded-0 increment-qty" data-item_id="{{ product.id }}" id="increment-qty_{{ product.id }}">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        {% if request.user.is_superuser %}
+                            <small>
+                                <a href="{% url 'edit_product' product.id %}">Edit</a>
+                                <a href="{% url 'delete_product' product.id %}" class="text-danger">Delete</a>
+                            </small>
+                        {% endif %}
+                        <div class="col-12">
+                            <a href="{% url 'products' %}" class="btn btn-outline-dark rounded-0 mt-5">
+                                <span class="text-uppercase">Keep shopping</span>
+                            </a>
+                            <input type="submit" class="btn btn-outline-dark rounded-0  mt-5" value="Add to cart">
+                        </div>
+                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block postloadjs %}
+{{ block.super }}
+{% include "products/includes/qty_input.html" %}
+{% endblock postloadjs %}

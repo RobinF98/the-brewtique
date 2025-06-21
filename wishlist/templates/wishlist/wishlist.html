@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="row"></div>
+    <div class="col-10 col-lg-6 offset-1 offset-lg-3 text-center">
+        <h2>Your Wishlist</h2>
+        <hr>
+    </div>
+</div>
+
+<div class="row"></div>
+    <div class="col-10 col-lg-6 offset-1 offset-lg-3">
+            <ul class="list-group m-1 rounded-0">
+                {% for item in wishlist_items %}
+                    <li class="list-group-item d-flex justify-content-between">
+                        <a href="{% url 'product_detail' item.product.id %}" class="text-dark text-decoration-none fw-bold mb-1">{{ item.product.name }}</a>
+                        <a href="{% url 'remove_from_wishlist' item.product.id 'wsh' %}" class="text-danger text-decoration-none">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </li>
+                {% empty %}
+                    <p class="text-muted text-center">You have nothing added to your wishlist</p>
+                {% endfor %}
+            </ul>
+    </div>
+</div>
+{% endblock content %}

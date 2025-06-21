@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'newsletter/css/newsletter.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+<div class="row">
+    <div class="col-10 offset-1 col-lg-6 offset-lg-3">
+        <h2>You've successfully signed up for our newsletter</h2>
+    <p class="text-muted">Keep an eye on your inbox for special offers and updates</p>
+        <div class="m-1 text-end">
+            <a href="{% url 'products' %}" class="btn btn-outline-dark rounded-0">Continue shopping</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}
